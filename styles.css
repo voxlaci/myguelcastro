@@ -389,6 +389,15 @@ h1 {
   filter: grayscale(1) contrast(1.2) brightness(0.92) saturate(0);
 }
 
+.proof-card-full {
+  grid-column: 1 / -1;
+  min-height: 460px;
+}
+
+.proof-card-full img {
+  object-position: center 38%;
+}
+
 .proof-card-portrait::after {
   content: "";
   position: absolute;
