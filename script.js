@@ -535,3 +535,79 @@ form.addEventListener("submit", (event) => {
 });
 
 applyLanguage("pt");
+
+/* ── Ask AI widget ─────────────────────────────── */
+const aiToggle  = document.querySelector("[data-ai-toggle]");
+const aiPanel   = document.querySelector("[data-ai-panel]");
+const aiClose   = document.querySelector("[data-ai-close]");
+const aiForm    = document.querySelector("[data-ai-form]");
+const aiInput   = document.querySelector("[data-ai-input]");
+
+const AI_CONTEXT = "Sobre Myguel Santos e Castro: artista, maestro, compositor e orador motivacional português baseado em Cascais. Fundou a VoxLaci em 1996. Oferece team building musical, concertos, workshops, masterclasses, juri e palestras. Site: myguelcastro.com. Responde em português.";
+
+function openAIQuery(question) {
+  const fullQuery = `${AI_CONTEXT}\n\nPergunta: ${question}`;
+  window.open(`https://chatgpt.com/?q=${encodeURIComponent(fullQuery)}`, "_blank", "noopener");
+}
+
+aiToggle?.addEventListener("click", () => {
+  aiPanel.classList.toggle("is-open");
+  if (aiPanel.classList.contains("is-open")) aiInput?.focus();
+});
+
+aiClose?.addEventListener("click", () => aiPanel.classList.remove("is-open"));
+
+document.querySelectorAll("[data-question]").forEach(chip => {
+  chip.addEventListener("click", () => openAIQuery(chip.dataset.question));
+});
+
+aiForm?.addEventListener("submit", e => {
+  e.preventDefault();
+  const q = aiInput.value.trim();
+  if (q) openAIQuery(q);
+});
+
+document.addEventListener("click", e => {
+  if (!e.target.closest(".ai-widget")) aiPanel?.classList.remove("is-open");
+});
+
+/* ── Share widget ──────────────────────────────── */
+const shareToggle = document.querySelector("[data-share-toggle]");
+const sharePanel  = document.querySelector("[data-share-panel]");
+const pageUrl     = encodeURIComponent(window.location.href);
+const pageTitle   = encodeURIComponent("Myguel Santos e Castro | Artista, Maestro e Orador");
+
+const shareUrls = {
+  whatsapp: `https://wa.me/?text=${encodeURIComponent("Myguel Santos e Castro — artista, maestro e orador motivacional. ")}${pageUrl}`,
+  facebook: `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`,
+  twitter:  `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`,
+  linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`,
+  email:    `mailto:?subject=${pageTitle}&body=${encodeURIComponent("Deixo aqui o link do site: ")}${pageUrl}`,
+};
+
+shareToggle?.addEventListener("click", () => {
+  if (navigator.share) {
+    navigator.share({ title: "Myguel Santos e Castro", url: window.location.href }).catch(() => {});
+    return;
+  }
+  sharePanel.classList.toggle("is-open");
+});
+
+document.querySelectorAll("[data-share]").forEach(el => {
+  const platform = el.dataset.share;
+  if (platform === "copy") {
+    el.addEventListener("click", () => {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        const label = el.querySelector("[data-copy-label]");
+        label.textContent = "Copiado!";
+        setTimeout(() => { label.textContent = "Copiar link"; }, 2000);
+      });
+    });
+  } else if (shareUrls[platform]) {
+    el.href = shareUrls[platform];
+  }
+});
+
+document.addEventListener("click", e => {
+  if (!e.target.closest(".share-widget")) sharePanel?.classList.remove("is-open");
+});
