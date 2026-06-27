@@ -254,6 +254,13 @@ h1 {
   color: var(--white);
 }
 
+.button.whatsapp {
+  background: #25d366;
+  color: #fff;
+  gap: 7px;
+  font-weight: 700;
+}
+
 .hero-strip {
   position: absolute;
   z-index: 3;
@@ -724,6 +731,49 @@ cite {
 .site-footer a {
   color: var(--white);
   font-weight: 750;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: clamp(60px, 8vw, 120px) clamp(20px, 6vw, 86px);
+  background: rgba(255,255,255,0.04);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.faq-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.faq-inner h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--white);
+  margin: 0 0 36px;
+}
+.faq-list {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+.faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 22px 0;
+}
+.faq-item dt {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0 0 10px;
+}
+.faq-item dd {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+}
+.faq-item dd a {
+  color: var(--gold);
+  text-decoration: underline;
 }
 
 .footer-credit {
