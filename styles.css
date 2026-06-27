@@ -1302,3 +1302,22 @@ cite {
   .ai-widget { right: 14px; bottom: 20px; }
   .ai-panel { width: calc(100vw - 28px); right: 0; }
 }
+
+/* Geographic reference */
+.geo-ref {
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 1.25rem 0 0;
+  padding: 0 clamp(20px, 6vw, 86px);
+}
+
+/* About credential */
+.about-credential {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 1.25rem;
+  line-height: 1.6;
+}
