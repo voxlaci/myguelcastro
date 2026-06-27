@@ -886,6 +886,22 @@ cite {
   }
 }
 
+/* ── RTL (Arabic) ────────────────────────────── */
+[dir="rtl"] .hero-content { margin-right: 0; margin-left: auto; }
+[dir="rtl"] .hero-strip { direction: rtl; }
+[dir="rtl"] .section-heading,
+[dir="rtl"] .intro-grid,
+[dir="rtl"] .about-panel,
+[dir="rtl"] .quote-panel { text-align: right; }
+[dir="rtl"] .proof-card figcaption { text-align: right; }
+[dir="rtl"] .site-header { direction: rtl; }
+[dir="rtl"] .language-switcher { margin-left: 0; margin-right: auto; }
+[dir="rtl"] .format-list > div { text-align: right; }
+[dir="rtl"] .service-card { text-align: right; }
+[dir="rtl"] blockquote { border-left: none; border-right: 3px solid var(--gold); padding-left: 0; padding-right: 1.2rem; }
+[dir="rtl"] .contact-methods { text-align: right; }
+[dir="rtl"] .impact-row { direction: rtl; }
+
 /* ── Floating widgets ─────────────────────────── */
 .floating-widgets {
   position: fixed;
