@@ -918,23 +918,18 @@ cite {
 [dir="rtl"] .impact-row { direction: rtl; }
 
 /* ── Floating widgets ─────────────────────────── */
-.floating-widgets {
+.share-widget {
   position: fixed;
   bottom: 28px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 24px;
-  pointer-events: none;
+  left: 24px;
   z-index: 900;
 }
 
-/* Ask AI */
-.ai-widget,
-.share-widget {
-  pointer-events: all;
-  position: relative;
+.ai-widget {
+  position: fixed;
+  bottom: 28px;
+  right: 24px;
+  z-index: 900;
 }
 
 .ai-toggle,
@@ -950,22 +945,20 @@ cite {
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.22);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.28);
   transition: transform 140ms ease, box-shadow 140ms ease;
 }
 
 .ai-toggle:hover,
 .share-toggle:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 26px rgba(0,0,0,0.28);
+  box-shadow: 0 8px 26px rgba(0,0,0,0.34);
 }
 
 .ai-toggle {
   background: #171412;
   color: #fff;
 }
-
-.ai-toggle svg { width: 18px; height: 18px; flex-shrink: 0; }
 
 .share-toggle {
   background: var(--gold);
@@ -975,18 +968,16 @@ cite {
   justify-content: center;
 }
 
-.share-toggle svg { width: 20px; height: 20px; }
-
-/* AI panel */
+/* AI panel — opens upward from right button */
 .ai-panel {
   position: absolute;
   bottom: calc(100% + 10px);
-  left: 0;
+  right: 0;
   width: 300px;
   background: #1a1714;
   border-radius: 14px;
   padding: 18px;
-  box-shadow: 0 12px 48px rgba(0,0,0,0.38);
+  box-shadow: 0 12px 48px rgba(0,0,0,0.42);
   display: none;
   flex-direction: column;
   gap: 12px;
@@ -1038,9 +1029,9 @@ cite {
   color: rgba(255,255,255,0.9);
   font-size: 0.82rem;
   line-height: 1.55;
-  margin: 4px 0 6px;
   padding: 10px 12px;
 }
+
 .ai-answer a { color: #c9a94a; text-decoration: underline; }
 .ai-answer strong { color: #fff; }
 
@@ -1073,15 +1064,15 @@ cite {
   padding: 0 14px;
 }
 
-/* Share panel */
+/* Share panel — opens upward from left button */
 .share-panel {
   position: absolute;
   bottom: calc(100% + 10px);
-  right: 0;
+  left: 0;
   background: #1a1714;
   border-radius: 14px;
   padding: 10px;
-  box-shadow: 0 12px 48px rgba(0,0,0,0.38);
+  box-shadow: 0 12px 48px rgba(0,0,0,0.42);
   display: none;
   flex-direction: column;
   gap: 4px;
@@ -1104,8 +1095,6 @@ cite {
 
 .share-platform:hover { background: rgba(255,255,255,0.09); }
 
-.share-platform svg { width: 18px; height: 18px; flex-shrink: 0; }
-
 .share-copy-btn {
   background: none;
   border: none;
@@ -1115,6 +1104,7 @@ cite {
 }
 
 @media (max-width: 480px) {
-  .floating-widgets { padding: 0 14px; bottom: 20px; }
-  .ai-panel { width: calc(100vw - 28px); }
+  .share-widget { left: 14px; bottom: 20px; }
+  .ai-widget { right: 14px; bottom: 20px; }
+  .ai-panel { width: calc(100vw - 28px); right: 0; }
 }
