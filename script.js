@@ -845,10 +845,6 @@ const shareUrls = {
 };
 
 shareToggle?.addEventListener("click", () => {
-  if (navigator.share) {
-    navigator.share({ title: "Myguel Santos e Castro", url: window.location.href }).catch(() => {});
-    return;
-  }
   sharePanel.classList.toggle("is-open");
 });
 
@@ -870,3 +866,28 @@ document.querySelectorAll("[data-share]").forEach(el => {
 document.addEventListener("click", e => {
   if (!e.target.closest(".share-widget")) sharePanel?.classList.remove("is-open");
 });
+
+/* ── Instagram latest post ─────────────────────────────── */
+(async function loadInstaPost() {
+  const container = document.getElementById("insta-latest");
+  if (!container) return;
+  try {
+    const res = await fetch("/instagram-latest");
+    if (!res.ok) return;
+    const data = await res.json();
+    if (!data.configured || data.error || !data.image) return;
+
+    const date = data.timestamp
+      ? new Date(data.timestamp).toLocaleDateString("pt-PT", { day: "numeric", month: "long", year: "numeric" })
+      : "";
+    const caption = data.caption ? `<p class="insta-caption">${data.caption.replace(/\n/g, " ")}${data.caption.length >= 180 ? "…" : ""}</p>` : "";
+
+    container.innerHTML = `
+      <a class="insta-post-link" href="${data.url}" target="_blank" rel="noopener">
+        <img class="insta-post-img" src="${data.image}" alt="Última publicação no Instagram" loading="lazy">
+      </a>
+      ${caption}
+      ${date ? `<p class="insta-date">${date}</p>` : ""}
+    `;
+  } catch (_) {}
+})();
