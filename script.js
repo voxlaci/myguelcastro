@@ -719,29 +719,83 @@ const aiPanel   = document.querySelector("[data-ai-panel]");
 const aiClose   = document.querySelector("[data-ai-close]");
 const aiForm    = document.querySelector("[data-ai-form]");
 const aiInput   = document.querySelector("[data-ai-input]");
+const aiAnswer  = document.querySelector("[data-ai-answer]");
 
-const AI_CONTEXT = "Sobre Myguel Santos e Castro: artista, maestro, compositor e orador motivacional português baseado em Cascais. Fundou a VoxLaci em 1996. Oferece team building musical, concertos, workshops, masterclasses, juri e palestras. Site: myguelcastro.com. Responde em português.";
+const AI_FAQ = [
+  {
+    keys: ["serviço","servicos","faz","ofere","actividade","atividade","service"],
+    answer: "Myguel Santos e Castro oferece: <strong>Team Building Musical</strong>, <strong>Concertos e Eventos</strong>, <strong>Workshops</strong>, <strong>Masterclasses</strong>, <strong>Júri e Direção Artística</strong> e <strong>Palestras Motivacionais</strong>. Todos os formatos são adaptados ao contexto e objetivos do cliente."
+  },
+  {
+    keys: ["contratar","book","reservar","contrct","agendar","preço","preco","valor","quanto","custo","orçamento","orcamento"],
+    answer: "Para contratar Myguel, preenche o formulário de contacto no final desta página com o tipo de evento, data, local e número de participantes. Recebes uma proposta personalizada. Podes também escrever diretamente para <a href='mailto:voxlaci@gmail.com'>voxlaci@gmail.com</a>."
+  },
+  {
+    keys: ["voxlaci","vox laci","empresa","associação","associacao","project","projeto"],
+    answer: "<strong>VoxLaci</strong> é o projeto artístico e educativo fundado por Myguel Santos e Castro em 1996, em Cascais. Desenvolve projetos corais, pedagógicos e de formação em Portugal e no estrangeiro. Mais de 30.000 pessoas participaram em projetos VoxLaci."
+  },
+  {
+    keys: ["internacional","paises","países","estrangeir","europe","europa","mundo","world"],
+    answer: "Myguel tem trabalho em vários países europeus e além, incluindo Portugal, Espanha, França, Itália e outros contextos internacionais, tanto em festivais como em formação coral intensiva."
+  },
+  {
+    keys: ["quem","who","bio","biografia","sobre","about","myguel","maestro","maestro","compositor","artista"],
+    answer: "<strong>Myguel Santos e Castro</strong> é artista, maestro coral, compositor, formador e orador motivacional português, baseado em Cascais. Com décadas de experiência, combina palco, formação e comunicação para criar experiências com impacto real em equipas, estudantes, audiências e organizações."
+  },
+  {
+    keys: ["team building","equipa","empresa","corporativo","corporate","reunião"],
+    answer: "<strong>Team Building Musical</strong> com Myguel combina dinâmicas de voz, ritmo, escuta ativa e presença em cena para ajudar equipas a alinhar energia, comunicação e confiança. Formato adaptável a meio-dia, dia completo ou sessão intensiva."
+  },
+  {
+    keys: ["workshop","oficina","formação","formacao","aprender","aula"],
+    answer: "<strong>Workshops</strong> práticos para grupos que querem desenvolver expressividade, musicalidade, criatividade, liderança e presença em palco. Disponível para escolas, empresas, festivais e instituições."
+  },
+  {
+    keys: ["masterclass","master class","técnica","tecnica","cantar","canto","coral","coro","coros"],
+    answer: "<strong>Masterclasses</strong> de trabalho técnico e interpretativo para artistas, estudantes e profissionais que procuram crescimento concreto e feedback exigente em contexto coral ou de direção."
+  },
+  {
+    keys: ["palestra","motivacional","speaker","inspiração","inspiracao","conferência","conferencia"],
+    answer: "<strong>Palestra Motivacional</strong> com linguagem direta e inspiração prática sobre disciplina, resiliência, performance, presença em palco e desenvolvimento pessoal. Ideal para empresas, escolas e eventos."
+  },
+  {
+    keys: ["cascais","portugal","onde","local","localiza"],
+    answer: "Myguel Santos e Castro está baseado em <strong>Cascais, Portugal</strong>, e trabalha em todo o país e no estrangeiro consoante disponibilidade e projeto."
+  }
+];
 
-function openAIQuery(question) {
-  const fullQuery = `${AI_CONTEXT}\n\nPergunta: ${question}`;
-  window.open(`https://chatgpt.com/?q=${encodeURIComponent(fullQuery)}`, "_blank", "noopener");
+const AI_FALLBACK_URL = "https://myguelcastro.com/#contact";
+
+function answerAI(rawQ) {
+  const q = rawQ.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+  const match = AI_FAQ.find(f => f.keys.some(k => q.includes(k)));
+  showAIAnswer(match
+    ? match.answer
+    : `Não tenho uma resposta direta para isso. Para mais informações consulta a <a href='${AI_FALLBACK_URL}' target='_blank'>página de contacto</a> ou escreve para <a href='mailto:voxlaci@gmail.com'>voxlaci@gmail.com</a>.`
+  );
+}
+
+function showAIAnswer(html) {
+  if (!aiAnswer) return;
+  aiAnswer.innerHTML = html;
+  aiAnswer.hidden = false;
 }
 
 aiToggle?.addEventListener("click", () => {
-  aiPanel.classList.toggle("is-open");
-  if (aiPanel.classList.contains("is-open")) aiInput?.focus();
+  const isOpen = aiPanel.classList.toggle("is-open");
+  if (isOpen) aiInput?.focus();
 });
 
 aiClose?.addEventListener("click", () => aiPanel.classList.remove("is-open"));
 
-document.querySelectorAll("[data-question]").forEach(chip => {
-  chip.addEventListener("click", () => openAIQuery(chip.dataset.question));
+document.querySelectorAll("[data-q]").forEach(chip => {
+  chip.addEventListener("click", () => answerAI(chip.dataset.q + " " + chip.textContent));
 });
 
 aiForm?.addEventListener("submit", e => {
   e.preventDefault();
   const q = aiInput.value.trim();
-  if (q) openAIQuery(q);
+  if (q) { answerAI(q); aiInput.value = ""; }
 });
 
 document.addEventListener("click", e => {
