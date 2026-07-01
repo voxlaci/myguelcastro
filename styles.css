@@ -1415,3 +1415,16 @@ cite {
 @media (max-width: 768px) {
   .insta-posts-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 }
+
+/* ── Testemunhos ──────────────────────────────────────────────────────────── */
+.testimonials-mc { padding: clamp(80px,10vw,120px) clamp(20px,8vw,120px); background: #0d0d0d; }
+.testimonials-mc-inner { max-width: 1140px; margin: 0 auto; }
+.testimonials-mc h2 { color: #fff; font-size: clamp(1.9rem,3.5vw,2.8rem); margin: 8px 0 48px; font-family: Georgia,"Times New Roman",serif; line-height: 1.15; }
+.testimonials-mc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.testimonial-mc-card { background: #1a1a1a; border-top: 3px solid var(--gold); border-radius: 12px; padding: 28px 28px 24px; margin: 0; display: flex; flex-direction: column; }
+.testimonial-mc-card p { color: #fff; font-size: clamp(0.95rem,1.1vw,1.05rem); line-height: 1.75; margin: 0 0 24px; flex: 1; }
+.testimonial-mc-card cite { font-style: normal; }
+.testimonial-mc-card cite strong { color: #fff; display: block; font-size: 0.9rem; margin-bottom: 3px; }
+.testimonial-mc-card cite::after { content: none; }
+.testimonial-mc-card cite { color: var(--gold); font-size: 0.83rem; }
+@media (max-width: 800px) { .testimonials-mc-grid { grid-template-columns: 1fr; gap: 16px; } .testimonial-mc-card { padding: 24px 22px 20px; } }
