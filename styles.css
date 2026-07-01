@@ -736,8 +736,8 @@ cite {
 /* FAQ Section */
 .faq-section {
   padding: clamp(60px, 8vw, 120px) clamp(20px, 6vw, 86px);
-  background: rgba(255,255,255,0.04);
-  border-top: 1px solid rgba(255,255,255,0.08);
+  background: #111;
+  border-top: none;
 }
 .faq-inner {
   max-width: 760px;
@@ -768,7 +768,7 @@ cite {
 .faq-item dd {
   margin: 0;
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.82);
   line-height: 1.6;
 }
 .faq-item dd a {
@@ -1415,6 +1415,18 @@ cite {
 @media (max-width: 768px) {
   .insta-posts-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 }
+
+/* ── Redes Sociais (links simples) ───────────────────────────────────────── */
+.social-links-section { padding: clamp(60px,8vw,100px) clamp(20px,6vw,86px); background: var(--paper); text-align: center; }
+.social-links-section .section-kicker { margin-bottom: 8px; }
+.social-links-section h2 { font-size: clamp(1.6rem,3vw,2.4rem); margin: 0 0 40px; }
+.social-links-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.social-link-card { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 28px 36px; background: #fff; border: 1px solid var(--line, #e0d8cc); border-radius: 12px; text-decoration: none; color: var(--ink); transition: box-shadow .2s, transform .2s; min-width: 160px; }
+.social-link-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.1); transform: translateY(-2px); }
+.social-link-card svg { opacity: .8; }
+.social-link-card span { font-weight: 700; font-size: 1rem; }
+.social-link-card small { color: var(--muted, #666); font-size: 0.82rem; }
+@media (max-width: 480px) { .social-links-row { flex-direction: column; align-items: center; } .social-link-card { width: 100%; max-width: 280px; } }
 
 /* ── Testemunhos ──────────────────────────────────────────────────────────── */
 .testimonials-mc { padding: clamp(80px,10vw,120px) clamp(20px,8vw,120px); background: #0d0d0d; }
