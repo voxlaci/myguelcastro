@@ -1,0 +1,36 @@
+name: Deploy to Cloudflare Pages
+
+# Publica automaticamente o site em produção (myguelcastro.com) a cada push
+# para `main`. Também pode ser corrido manualmente em Actions → "Run workflow".
+#
+# Requer 1 secret no repositório (Settings → Secrets and variables → Actions):
+#   CLOUDFLARE_API_TOKEN  — token com permissão "Account · Cloudflare Pages · Edit"
+#
+# O checkout do Git é limpo (os ficheiros internos estão em .gitignore), por isso
+# nada de sensível é publicado.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 8b2a655b8b234c8dc76b31074192dbb3
+          command: pages deploy . --project-name=myguel-santos-castro --branch=main
