@@ -33,4 +33,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 8b2a655b8b234c8dc76b31074192dbb3
+          wranglerVersion: "4.106.0"
           command: pages deploy . --project-name=myguel-santos-castro --branch=main
