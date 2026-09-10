@@ -1,0 +1,117 @@
+/* Corporate Team Building — Myguel Santos e Castro
+   Camada B2B por cima de styles.css + subpage.css.
+   Só acrescenta: barra de confiança, grelhas de competências/ocasiões,
+   tabela de formatos e o formulário de proposta. */
+
+/* ── Barra de confiança ─────────────────────────────────────────── */
+.tb-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  padding: 20px clamp(20px, 6vw, 86px);
+  background: #0f0d0c;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.tb-trust b { color: var(--gold); font-weight: 700; }
+.tb-trust span { display: inline-flex; align-items: center; gap: 8px; }
+
+/* ── "Não é / é" ────────────────────────────────────────────────── */
+.tb-isnt {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 10px;
+}
+.tb-isnt > div { background: var(--panel); padding: 22px 24px; }
+.tb-isnt .no { color: var(--red); font-weight: 700; }
+.tb-isnt .yes { color: var(--green); font-weight: 700; }
+.tb-isnt p { margin: 6px 0 0; color: #2c2622; font-size: 0.98rem; }
+
+/* ── Grelha de competências / ocasiões ──────────────────────────── */
+.tb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+.tb-grid .card {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+.tb-grid .card h3 { margin: 0 0 6px; font-size: 1.02rem; }
+.tb-grid .card p { margin: 0; font-size: 0.94rem; color: #2c2622; }
+
+.tb-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.tb-tags li {
+  list-style: none;
+  padding: 9px 15px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  background: var(--panel);
+}
+
+/* ── Tabela de formatos ─────────────────────────────────────────── */
+.tb-formats {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 0.98rem;
+}
+.tb-formats th,
+.tb-formats td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.tb-formats th { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.tb-formats td:first-child { font-weight: 700; white-space: nowrap; }
+.tb-note { margin-top: 14px; font-size: 0.9rem; color: var(--muted); }
+
+/* ── Formulário de proposta ─────────────────────────────────────── */
+.tb-form-section {
+  padding: clamp(56px, 8vw, 104px) clamp(20px, 6vw, 86px);
+  background: var(--ink);
+  color: var(--white);
+}
+.tb-form-section h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3.4vw, 2.8rem); }
+.tb-form-section .lead { max-width: 60ch; color: rgba(255, 255, 255, 0.8); margin: 0 0 34px; }
+
+.tb-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 18px;
+  max-width: 780px;
+}
+.tb-form label { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; font-weight: 600; color: rgba(255, 255, 255, 0.75); }
+.tb-form label.full { grid-column: 1 / -1; }
+.tb-form input,
+.tb-form select,
+.tb-form textarea {
+  padding: 11px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  font-size: 0.98rem;
+}
+.tb-form input:focus,
+.tb-form select:focus,
+.tb-form textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.tb-form option { color: #171412; }
+.tb-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.tb-form .actions { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
+.tb-form .form-note { grid-column: 1 / -1; font-size: 0.9rem; color: var(--gold); min-height: 1.2em; margin: 0; }
+.tb-form .privacy { grid-column: 1 / -1; font-size: 0.82rem; color: rgba(255, 255, 255, 0.55); margin: 0; }
+
+@media (max-width: 680px) {
+  .tb-form { grid-template-columns: 1fr; }
+}
