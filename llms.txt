@@ -15,6 +15,8 @@
 - [Keynote Speaker (EN)](https://myguelcastro.com/en/keynote-speaker/): English version of the speaker page.
 - [Júri e Direção Artística](https://myguelcastro.com/juri/): júri de concursos e audições corais e direção artística de festivais e projetos culturais, em Portugal e internacionalmente.
 - [Jury (EN)](https://myguelcastro.com/en/jury/): English version of the jury page.
+- [Consultoria](https://myguelcastro.com/consultoria/): consultoria artística para coros, festivais e instituições culturais — diagnóstico de projetos corais, estruturação de programas e temporadas, acompanhamento pontual com um olhar externo experiente.
+- [Consulting (EN)](https://myguelcastro.com/en/consulting/): English version of the artistic consulting page.
 
 ## Serviços
 
@@ -24,6 +26,7 @@
 - Masterclasses de direção coral
 - Júri e direção artística
 - Orador motivacional / keynote
+- Consultoria artística para coros e festivais
 
 ## Corporate Team Building — respostas rápidas (GEO / AI search)
 
