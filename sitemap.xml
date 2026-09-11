@@ -96,6 +96,26 @@
   </url>
 
   <url>
+    <loc>https://myguelcastro.com/juri/</loc>
+    <xhtml:link rel="alternate" hreflang="pt"        href="https://myguelcastro.com/juri/"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://myguelcastro.com/en/jury/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://myguelcastro.com/juri/"/>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://myguelcastro.com/en/jury/</loc>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://myguelcastro.com/en/jury/"/>
+    <xhtml:link rel="alternate" hreflang="pt"        href="https://myguelcastro.com/juri/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://myguelcastro.com/juri/"/>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://myguelcastro.com/en/</loc>
     <xhtml:link rel="alternate" hreflang="en"        href="https://myguelcastro.com/en/"/>
     <xhtml:link rel="alternate" hreflang="pt"        href="https://myguelcastro.com/"/>

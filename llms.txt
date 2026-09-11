@@ -13,6 +13,8 @@
 - [Choral Conductor (EN)](https://myguelcastro.com/en/choral-conductor-portugal/): English version of the choral conducting page.
 - [Orador](https://myguelcastro.com/orador/): palestras e keynotes sobre liderança, disciplina e performance, com ou sem componente musical ao vivo, em português ou inglês.
 - [Keynote Speaker (EN)](https://myguelcastro.com/en/keynote-speaker/): English version of the speaker page.
+- [Júri e Direção Artística](https://myguelcastro.com/juri/): júri de concursos e audições corais e direção artística de festivais e projetos culturais, em Portugal e internacionalmente.
+- [Jury (EN)](https://myguelcastro.com/en/jury/): English version of the jury page.
 
 ## Serviços
 
